@@ -1,46 +1,43 @@
 package pl.wojcik.entity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-@Data
 @NoArgsConstructor
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     Long id;
+
+    @Getter
+    @Setter
     @Column(nullable = false, unique = true)
     String login;
-    @Column(nullable = false)
-    String password;
+
     @Lob
-    @Column(name = "hashed_password", nullable = false)
-    byte[] hash_pass;
+    @Getter
+    @Setter
+    @Column(nullable = false)
+    byte[] password;
+
+    @Getter
+    @Setter
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
-    List<Post> posts = new LinkedList<>();
+    Set<Post> posts = new LinkedHashSet<>();
 
 
-    public User(String login, String password) throws NoSuchAlgorithmException {
+    public User(String login, byte[] password) throws NoSuchAlgorithmException {
         this.login = login;
         this.password = password;
-        this.hash_pass = hashPassword(password);
     }
 
-    private byte[] hashPassword(String password_plaintext) throws NoSuchAlgorithmException {
-        return (MessageDigest.getInstance("SHA-512").digest(password_plaintext.getBytes(StandardCharsets.UTF_8)));
-    }
-
-    public void addPost(Post post) {
-        post.setUser(this);
-        posts.add(post);
-    }
 }

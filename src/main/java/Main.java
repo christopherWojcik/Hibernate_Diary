@@ -1,3 +1,5 @@
+import diary.Diary;
+
 import java.security.NoSuchAlgorithmException;
 
 public class Main {

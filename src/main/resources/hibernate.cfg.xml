@@ -2,6 +2,7 @@
     <session-factory>
         <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <!--        Set your schema!  -->
         <property name="connection.url">jdbc:mysql://localhost:3306/jdbc_sda?serverTimezone=Europe/Warsaw</property>
         <property name="connection.username">root</property>
         <!--        Enter Your Password here: -->
@@ -12,6 +13,5 @@
         <property name="use.sql_comments">true</property>
         <mapping class="pl.wojcik.entity.User"/>
         <mapping class="pl.wojcik.entity.Post"/>
-
     </session-factory>
 </hibernate-configuration>
