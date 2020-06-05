@@ -34,10 +34,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     Set<Post> posts = new LinkedHashSet<>();
 
-
     public User(String login, byte[] password) throws NoSuchAlgorithmException {
         this.login = login;
         this.password = password;
     }
-
 }

@@ -4,11 +4,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class HibernateUtils {
+public class MyHibernateUtils implements MySessionFactory{
 
     private final SessionFactory sessionFactory;
 
-    public HibernateUtils() {
+    public MyHibernateUtils() {
         sessionFactory = new MetadataSources(
                 new StandardServiceRegistryBuilder()
                         .configure() // .configure() -> without param by default load configuration from file hibernate.cfg.xml
