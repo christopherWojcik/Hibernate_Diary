@@ -24,6 +24,8 @@ public interface MessageGenerator {
 
     void sayEditContent();
 
+    void sayPleaseEnterYourChoice();
+
     void askIfWantEditTitle();
 
     void askIfWantEditContent();

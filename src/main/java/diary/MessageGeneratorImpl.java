@@ -53,6 +53,10 @@ public class MessageGeneratorImpl implements MessageGenerator{
         System.out.println("Please enter new content for edited post:");
     }
 
+    public void sayPleaseEnterYourChoice() {
+        System.out.println("Please enter Your choice:");
+    }
+
     public void askIfWantEditTitle() {
         System.out.println("+---------------------------------------------------------------------------------+");
         System.out.println("|                 Do You want to edit the post title? (y/n)                       |");

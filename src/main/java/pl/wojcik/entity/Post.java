@@ -15,14 +15,17 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     Long id;
+
     @Getter
     @Setter
     @Column(nullable = false)
     String title;
+
     @Getter
     @Setter
     @Column(nullable = false)
     String content;
+
     @Getter
     @Setter(AccessLevel.PACKAGE)
     @ManyToOne
@@ -34,7 +37,4 @@ public class Post {
         this.user = user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

@@ -31,10 +31,14 @@ public class User {
 
     @Getter
     @Setter
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(
+            cascade = {CascadeType.REMOVE, CascadeType.PERSIST},
+            mappedBy = "user",
+            fetch = FetchType.EAGER,
+            orphanRemoval = true)
     Set<Post> posts = new LinkedHashSet<>();
 
-    public User(String login, byte[] password) throws NoSuchAlgorithmException {
+    public User(String login, byte[] password){
         this.login = login;
         this.password = password;
     }
